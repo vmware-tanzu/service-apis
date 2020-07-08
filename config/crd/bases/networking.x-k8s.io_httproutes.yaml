@@ -16,7 +16,7 @@ spec:
     singular: httproute
   scope: Namespaced
   versions:
-  - name: v1alpha1
+  - name: v1alpha0
     schema:
       openAPIV3Schema:
         description: HTTPRoute is the Schema for the httproutes API

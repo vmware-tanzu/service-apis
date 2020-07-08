@@ -192,7 +192,7 @@ TODO
 defined by the infrastructure provider. This resource represents a class of
 Gateways that can be instantiated.
 
-[gatewayclass-src]: https://github.com/kubernetes-sigs/service-apis/blob/master/api/v1alpha1/gatewayclass_types.go
+[gatewayclass-src]: https://github.com/vmware-tanzu/service-apis/blob/support/v1alpha0/api/v1alpha0/gatewayclass_types.go
 
 > Note: this serves the same function as the [`networking.IngressClass` resource][ingress-class-api].
 

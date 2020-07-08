@@ -21,7 +21,7 @@ import (
 	"github.com/go-logr/logr"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-	"sigs.k8s.io/service-apis/api/v1alpha1"
+	"sigs.k8s.io/service-apis/api/v1alpha0"
 )
 
 // TcpRouteReconciler reconciles a TcpRoute object
@@ -46,6 +46,6 @@ func (r *TcpRouteReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 // SetupWithManager wires up the controller.
 func (r *TcpRouteReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&v1alpha1.TcpRoute{}).
+		For(&v1alpha0.TcpRoute{}).
 		Complete(r)
 }

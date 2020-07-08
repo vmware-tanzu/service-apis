@@ -24,7 +24,7 @@ import (
 	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
-	"sigs.k8s.io/service-apis/api/v1alpha1"
+	"sigs.k8s.io/service-apis/api/v1alpha0"
 	"sigs.k8s.io/service-apis/controllers"
 	// +kubebuilder:scaffold:imports
 )
@@ -37,7 +37,7 @@ var (
 func init() {
 	_ = clientgoscheme.AddToScheme(scheme)
 
-	_ = v1alpha1.AddToScheme(scheme)
+	_ = v1alpha0.AddToScheme(scheme)
 	// +kubebuilder:scaffold:scheme
 }
 

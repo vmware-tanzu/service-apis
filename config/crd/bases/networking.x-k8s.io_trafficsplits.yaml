@@ -16,7 +16,7 @@ spec:
     singular: trafficsplit
   scope: Namespaced
   versions:
-  - name: v1alpha1
+  - name: v1alpha0
     schema:
       openAPIV3Schema:
         description: TrafficSplit is the Schema for the trafficsplits API

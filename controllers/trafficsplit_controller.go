@@ -19,9 +19,9 @@ import (
 	"context"
 
 	"github.com/go-logr/logr"
+	"github.com/vmware-tanzu/service-apis/api/v1alpha0"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-	"sigs.k8s.io/service-apis/api/v1alpha0"
 )
 
 // TrafficSplitReconciler reconciles a TrafficSplit object

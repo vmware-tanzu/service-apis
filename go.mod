@@ -1,4 +1,4 @@
-module sigs.k8s.io/service-apis
+module github.com/vmware-tanzu/service-apis
 
 go 1.13
 

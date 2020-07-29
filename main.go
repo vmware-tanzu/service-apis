@@ -19,13 +19,13 @@ import (
 	"flag"
 	"os"
 
+	"github.com/vmware-tanzu/service-apis/api/v1alpha0"
+	"github.com/vmware-tanzu/service-apis/controllers"
 	"k8s.io/apimachinery/pkg/runtime"
 	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
-	"sigs.k8s.io/service-apis/api/v1alpha0"
-	"sigs.k8s.io/service-apis/controllers"
 	// +kubebuilder:scaffold:imports
 )
 

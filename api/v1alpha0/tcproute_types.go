@@ -35,6 +35,7 @@ type TcpRouteStatus struct {
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:skipversion
 
 // TcpRoute is the Schema for the tcproutes API
 type TcpRoute struct {
@@ -46,6 +47,7 @@ type TcpRoute struct {
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:skipversion
 
 // TcpRouteList contains a list of TcpRoute
 type TcpRouteList struct {

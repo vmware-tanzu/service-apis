@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package v1alpha1
+package v1alpha1pre1
 
 const (
 	// TLS1_0 denotes the TLS v1.0.

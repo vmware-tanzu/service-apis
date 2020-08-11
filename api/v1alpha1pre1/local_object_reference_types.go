@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package v1alpha1
+package v1alpha1pre1
 
 // ServicesDefaultLocalObjectReference identifies an API object within a
 // known namespace that defaults group to core and resource to services

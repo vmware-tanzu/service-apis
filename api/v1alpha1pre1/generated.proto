@@ -17,7 +17,7 @@ limitations under the License.
 
 syntax = 'proto2';
 
-package k8s.io.service_apis.api.v1alpha1;
+package k8s.io.service_apis.api.v1alpha1pre1;
 
 import "k8s.io/api/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
@@ -25,7 +25,7 @@ import "k8s.io/apimachinery/pkg/runtime/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 
 // Package-wide variables from generator "generated".
-option go_package = "v1alpha1";
+option go_package = "v1alpha1pre1";
 
 // RouteMatchExtensionObjectReference identifies a route-match extension object
 // within a known namespace.

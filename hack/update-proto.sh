@@ -31,7 +31,7 @@ go run k8s.io/code-generator/cmd/go-to-protobuf \
 
 go run k8s.io/code-generator/cmd/go-to-protobuf \
     --proto-import=$PWD/vendor --proto-import=$PWD/third_party/protobuf \
-    --packages github.com/vmware-tanzu/service-apis/api/v1alpha1pre1=k8s.io.service_apis.api.v1alpha1pre1,-sigs.k8s.io/controller-runtime/pkg/scheme \
+    --packages github.com/vmware-tanzu/service-apis/apis/v1alpha1pre1=k8s.io.service_apis.api.v1alpha1pre1,-sigs.k8s.io/controller-runtime/pkg/scheme \
     --drop-embedded-fields k8s.io/apimachinery/pkg/runtime.SchemeBuilder,sigs.k8s.io/controller-runtime/pkg/scheme \
     --apimachinery-packages -k8s.io/apimachinery/pkg/runtime/schema,-k8s.io/apimachinery/pkg/runtime,-k8s.io/apimachinery/pkg/apis/meta/v1,-k8s.io/api/core/v1 \
     --go-header-file hack/boilerplate.go.txt

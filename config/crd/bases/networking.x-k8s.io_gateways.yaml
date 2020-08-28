@@ -555,6 +555,7 @@ spec:
                       - HTTPS
                       - TLS
                       - TCP
+                      - UDP
                       type: string
                     routes:
                       description: "Routes specifies a schema for associating routes

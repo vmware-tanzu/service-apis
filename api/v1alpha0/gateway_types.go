@@ -21,6 +21,7 @@ import (
 )
 
 // +kubebuilder:object:root=true
+// +kubebuilder:unservedversion
 
 // Gateway represents an instantiation of a service-traffic handling infrastructure.
 type Gateway struct {
@@ -32,6 +33,7 @@ type Gateway struct {
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:unservedversion
 
 // GatewayList contains a list of Gateway
 type GatewayList struct {

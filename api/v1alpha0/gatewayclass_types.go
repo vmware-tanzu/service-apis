@@ -23,6 +23,7 @@ import (
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:scope=Cluster
 // +kubebuilder:subresource:status
+// +kubebuilder:unservedversion
 // +genclient
 // +genclient:nonNamespaced
 // +k8s:openapi-gen=true
@@ -171,6 +172,7 @@ type GatewayClassCondition struct {
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:unservedversion
 
 // GatewayClassList contains a list of GatewayClass
 type GatewayClassList struct {

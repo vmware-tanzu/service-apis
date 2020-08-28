@@ -305,6 +305,7 @@ type GatewayObjectReference struct {
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:unservedversion
 
 // HTTPRoute is the Schema for the httproutes API
 type HTTPRoute struct {
@@ -316,6 +317,7 @@ type HTTPRoute struct {
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:unservedversion
 
 // HTTPRouteList contains a list of HTTPRoute
 type HTTPRouteList struct {

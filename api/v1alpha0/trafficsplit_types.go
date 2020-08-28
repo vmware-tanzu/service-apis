@@ -36,6 +36,7 @@ type TrafficSplitStatus struct {
 
 // +kubebuilder:object:root=true
 // +kubebuilder:skipversion
+// +kubebuilder:unservedversion
 
 // TrafficSplit is the Schema for the trafficsplits API
 type TrafficSplit struct {
@@ -48,6 +49,7 @@ type TrafficSplit struct {
 
 // +kubebuilder:object:root=true
 // +kubebuilder:skipversion
+// +kubebuilder:unservedversion
 
 // TrafficSplitList contains a list of TrafficSplit
 type TrafficSplitList struct {

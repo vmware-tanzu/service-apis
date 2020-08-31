@@ -16,9 +16,10 @@ import (
 	"github.com/onsi/gomega/gbytes"
 	"github.com/onsi/gomega/gexec"
 
-	"sigs.k8s.io/testing_frameworks/integration/addr"
+	"sigs.k8s.io/controller-runtime/pkg/internal/testing/integration/addr"
 )
 
+// ProcessState define the state of the process.
 type ProcessState struct {
 	DefaultedProcessInput
 	Session *gexec.Session
@@ -30,7 +31,7 @@ type ProcessState struct {
 	// HealthCheckEndpoint.
 	// If left empty it will default to 100 Milliseconds.
 	HealthCheckPollInterval time.Duration
-	// StartMessage is the message to wait for on stderr. If we recieve this
+	// StartMessage is the message to wait for on stderr. If we receive this
 	// message, we assume the process is ready to operate. Ignored if
 	// HealthCheckEndpoint is specified.
 	//
@@ -46,6 +47,7 @@ type ProcessState struct {
 	ready bool
 }
 
+// DefaultedProcessInput defines the default process input required to perform the test.
 type DefaultedProcessInput struct {
 	URL              url.URL
 	Dir              string
@@ -55,9 +57,11 @@ type DefaultedProcessInput struct {
 	StartTimeout     time.Duration
 }
 
+// DoDefaulting sets the default configuration according to the data informed and return an DefaultedProcessInput
+// and an error if some requirement was not informed.
 func DoDefaulting(
 	name string,
-	listenUrl *url.URL,
+	listenURL *url.URL,
 	dir string,
 	path string,
 	startTimeout time.Duration,
@@ -70,7 +74,7 @@ func DoDefaulting(
 		StopTimeout:  stopTimeout,
 	}
 
-	if listenUrl == nil {
+	if listenURL == nil {
 		port, host, err := addr.Suggest()
 		if err != nil {
 			return DefaultedProcessInput{}, err
@@ -80,7 +84,7 @@ func DoDefaulting(
 			Host:   net.JoinHostPort(host, strconv.Itoa(port)),
 		}
 	} else {
-		defaults.URL = *listenUrl
+		defaults.URL = *listenURL
 	}
 
 	if dir == "" {
@@ -112,6 +116,8 @@ func DoDefaulting(
 
 type stopChannel chan struct{}
 
+// Start starts the apiserver, waits for it to come up, and returns an error,
+// if occurred.
 func (ps *ProcessState) Start(stdout, stderr io.Writer) (err error) {
 	if ps.ready {
 		return nil
@@ -170,9 +176,12 @@ func pollURLUntilOK(url url.URL, interval time.Duration, ready chan bool, stopCh
 	}
 	for {
 		res, err := http.Get(url.String())
-		if err == nil && res.StatusCode == http.StatusOK {
-			ready <- true
-			return
+		if err == nil {
+			res.Body.Close()
+			if res.StatusCode == http.StatusOK {
+				ready <- true
+				return
+			}
 		}
 
 		select {
@@ -184,6 +193,8 @@ func pollURLUntilOK(url url.URL, interval time.Duration, ready chan bool, stopCh
 	}
 }
 
+// Stop stops this process gracefully, waits for its termination, and cleans up
+// the CertDir if necessary.
 func (ps *ProcessState) Stop() error {
 	if ps.Session == nil {
 		return nil

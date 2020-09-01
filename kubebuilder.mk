@@ -36,9 +36,13 @@ ROOT := $(abspath $(TOP))
 # enable Go modules
 export GO111MODULE=on
 
-CONTROLLER_GEN=GOFLAGS=-mod=vendor go run sigs.k8s.io/controller-tools/cmd/controller-gen
+CONTROLLER_GEN=hack/tools/bin/controller-gen
 
 all: manager
+
+# Builds controller-gen if not installed
+$(CONTROLLER_GEN):
+	$(MAKE) -C hack/tools controller-gen
 
 # Run tests
 test: generate fmt vet manifests
@@ -62,7 +66,7 @@ deploy: manifests
 	kustomize build config/default | kubectl apply -f -
 
 # Generate manifests e.g. CRD, RBAC etc.
-manifests:
+manifests: $(CONTROLLER_GEN)
 	$(CONTROLLER_GEN) $(CRD_OPTIONS) rbac:roleName=manager-role webhook paths="./..." output:crd:artifacts:config=config/crd/bases
 
 .PHONY: update
@@ -77,7 +81,7 @@ vet:
 	go vet ./...
 
 # Generate code
-generate:
+generate: $(CONTROLLER_GEN)
 	$(CONTROLLER_GEN) object:headerFile=./hack/boilerplate.go.txt paths="./..."
 
 # Generate protobufs

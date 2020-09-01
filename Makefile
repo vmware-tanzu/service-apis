@@ -16,7 +16,7 @@ DOCKER ?= docker
 # Image to build protobufs
 PROTO_IMG ?= k8s.gcr.io/kube-cross:v1.13.6-1
 # The controller-gen command for generating CRDs from API definitions.
-CONTROLLER_GEN=GOFLAGS=-mod=vendor go run sigs.k8s.io/controller-tools/cmd/controller-gen
+CONTROLLER_GEN=hack/tools/bin/controller-gen
 # The output directory for generated CRDs.
 CRD_OUTPUT_DIR ?= "config/crd/bases"
 # Produce CRDs that work back to Kubernetes 1.11 (no version conversion)
@@ -27,6 +27,10 @@ TOP := $(dir $(firstword $(MAKEFILE_LIST)))
 ROOT := $(abspath $(TOP))
 
 all: controller generate verify
+
+# Builds controller-gen if not installed
+$(CONTROLLER_GEN):
+	$(MAKE) -C hack/tools controller-gen
 
 # Kubebuilder driven custom resource definitions.
 .PHONY: controller
@@ -57,7 +61,7 @@ clean:
 
 # Generate manifests e.g. CRD, RBAC etc.
 .PHONY: manifests
-manifests:
+manifests: $(CONTROLLER_GEN)
 	$(CONTROLLER_GEN) $(CRD_OPTIONS) rbac:roleName=manager-role webhook paths="./..." output:crd:artifacts:config=$(CRD_OUTPUT_DIR)
 
 # Generate protobufs

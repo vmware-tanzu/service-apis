@@ -19,7 +19,6 @@ limitations under the License.
 package v1alpha1pre1
 
 import (
-	"context"
 	time "time"
 
 	apisv1alpha1pre1 "github.com/vmware-tanzu/service-apis/apis/v1alpha1pre1"
@@ -62,13 +61,13 @@ func NewFilteredTCPRouteInformer(client versioned.Interface, namespace string, r
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.NetworkingV1alpha1pre1().TCPRoutes(namespace).List(context.TODO(), options)
+				return client.NetworkingV1alpha1pre1().TCPRoutes(namespace).List(options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.NetworkingV1alpha1pre1().TCPRoutes(namespace).Watch(context.TODO(), options)
+				return client.NetworkingV1alpha1pre1().TCPRoutes(namespace).Watch(options)
 			},
 		},
 		&apisv1alpha1pre1.TCPRoute{},

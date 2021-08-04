@@ -34,8 +34,7 @@ type HTTPRouteReconciler struct {
 // +kubebuilder:rbac:groups=networking.x-k8s.io,resources=httproutes/status,verbs=get;update;patch
 
 // Reconcile the changes.
-func (r *HTTPRouteReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	_ = context.Background()
+func (r *HTTPRouteReconciler) Reconcile(_ context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = r.Log.WithValues("httproute", req.NamespacedName)
 
 	// your logic here

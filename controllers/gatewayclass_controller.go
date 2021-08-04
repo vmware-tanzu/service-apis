@@ -34,8 +34,7 @@ type GatewayClassReconciler struct {
 // +kubebuilder:rbac:groups=networking.x-k8s.io,resources=gatewayclasses/status,verbs=get;update;patch
 
 // Reconcile the changes.
-func (r *GatewayClassReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	_ = context.Background()
+func (r *GatewayClassReconciler) Reconcile(_ context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = r.Log.WithValues("gatewayclass", req.NamespacedName)
 
 	// your logic here

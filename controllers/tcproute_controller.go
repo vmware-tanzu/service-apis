@@ -34,8 +34,7 @@ type TcpRouteReconciler struct {
 // +kubebuilder:rbac:groups=networking.x-k8s.io,resources=tcproutes/status,verbs=get;update;patch
 
 // Reconcile the changes.
-func (r *TcpRouteReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	_ = context.Background()
+func (r *TcpRouteReconciler) Reconcile(_ context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = r.Log.WithValues("tcproute", req.NamespacedName)
 
 	// your logic here

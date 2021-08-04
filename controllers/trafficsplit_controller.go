@@ -34,8 +34,7 @@ type TrafficSplitReconciler struct {
 // +kubebuilder:rbac:groups=networking.x-k8s.io,resources=trafficsplits/status,verbs=get;update;patch
 
 // Reconcile the changes.
-func (r *TrafficSplitReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	_ = context.Background()
+func (r *TrafficSplitReconciler) Reconcile(_ context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = r.Log.WithValues("trafficsplit", req.NamespacedName)
 
 	// your logic here
